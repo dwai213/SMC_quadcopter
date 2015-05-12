@@ -16,7 +16,7 @@ I = [Ix Iy Iz]; %kg m2
 H_nom = diag([m_nom,m_nom,m_nom,Ix_nom,Iy_nom,Iz_nom]);
 CC_nom = diag([C_nom,Cd_nom]);
 
-lamb = [5 100 5 5 5 5];
+lamb = [5 100 5 .1 .1 .1];
 PSI = [.005 .005 .005 .005 .005 .005]';
 eta = [1 1 1 1 1 1]';
 Km = 1; %Reaction Torque Gain
@@ -55,6 +55,8 @@ w2 = h_rotor.w2.Data;
 w3 = h_rotor.w3.Data;
 w4 = h_rotor.w4.Data;
 
+T1 = h_forces.T1.Data;
+
 figure(1)
 plot(t,[x y z])
 legend('x','y','z'); xlabel('Time'); ylabel('m')
@@ -74,3 +76,5 @@ figure(4)
 plot(t,[eX eY eZ])
 legend('eX','eY','eZ'); xlabel('Time'); ylabel('Error')
 title('Error vs Time')
+
+
