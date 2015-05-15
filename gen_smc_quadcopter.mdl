@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.873"
+    ComputedModelVersion    "1.876"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "dwai"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue May 12 02:27:48 2015"
-  RTWModifiedTimeStamp	  353280488
-  ModelVersionFormat	  "1.%<AutoIncrement:873>"
+  LastModifiedDate	  "Fri May 15 14:08:40 2015"
+  RTWModifiedTimeStamp	  353559316
+  ModelVersionFormat	  "1.%<AutoIncrement:876>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "smc_quadcopter"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -796,6 +797,19 @@ Model {
       SFunctionDeploymentMode off
     }
     Block {
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      Step
       Time		      "1"
       Before		      "0"
@@ -867,7 +881,7 @@ Model {
   }
   System {
     Name		    "gen_smc_quadcopter"
-    Location		    [126, 94, 1432, 586]
+    Location		    [0, 73, 1440, 551]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -881,13 +895,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "708"
+    SIDHighWatermark	    "711"
     Block {
       BlockType		      BusSelector
       Name		      "Bus\nSelector"
       SID		      "575"
       Ports		      [1, 1]
-      Position		      [516, 380, 554, 385]
+      Position		      [486, 380, 524, 385]
       ZOrder		      -3
       BlockRotation	      270
       ShowName		      off
@@ -909,7 +923,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Controller - Error to Rotor Speed"
-	Location		[266, 50, 1433, 878]
+	Location		[266, 94, 1433, 922]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2650,7 +2664,7 @@ Model {
       Name		      "Plant - Quadcopter Model"
       SID		      "44"
       Ports		      [1, 1]
-      Position		      [820, 224, 965, 296]
+      Position		      [710, 224, 855, 296]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3423,7 +3437,7 @@ Model {
       Name		      "Reference Generator"
       SID		      "85"
       Ports		      [1, 1]
-      Position		      [105, 38, 205, 82]
+      Position		      [105, 123, 205, 167]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3433,7 +3447,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Reference Generator"
-	Location		[410, 121, 1418, 791]
+	Location		[410, 144, 1418, 814]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -3702,6 +3716,22 @@ Model {
 	  SaturateOnIntegerOverflow off
 	}
 	Block {
+	  BlockType		  Sin
+	  Name			  "Sine Wave"
+	  SID			  "710"
+	  Ports			  [0, 1]
+	  Position		  [25, 35, 55, 65]
+	  ZOrder		  -21
+	  Amplitude		  ".1"
+	  SampleTime		  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "x_ref"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Step
 	  Name			  "Step"
 	  SID			  "282"
@@ -3713,22 +3743,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "y_ref"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Step
-	  Name			  "Step1"
-	  SID			  "317"
-	  Position		  [25, 35, 55, 65]
-	  ZOrder		  -22
-	  Time			  "step_time(1)"
-	  After			  "ref(1)"
-	  SampleTime		  "0"
-	  Port {
-	    PortNumber		    1
-	    Name		    "x_ref"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3816,6 +3830,18 @@ Model {
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
+	}
+	Block {
+	  BlockType		  ToWorkspace
+	  Name			  "To Workspace"
+	  SID			  "711"
+	  Ports			  [1]
+	  Position		  [475, 560, 535, 590]
+	  ZOrder		  -7
+	  VariableName		  "h_th_ref"
+	  MaxDataPoints		  "inf"
+	  SampleTime		  "-1"
+	  SaveFormat		  "Timeseries"
 	}
 	Block {
 	  BlockType		  Constant
@@ -4053,7 +4079,7 @@ Model {
 	Line {
 	  Name			  "x_ref"
 	  Labels		  [0, 0]
-	  SrcBlock		  "Step1"
+	  SrcBlock		  "Sine Wave"
 	  SrcPort		  1
 	  Points		  [130, 0]
 	  Branch {
@@ -4164,14 +4190,22 @@ Model {
 	  Labels		  [0, 0]
 	  SrcBlock		  "Sum3"
 	  SrcPort		  1
-	  Points		  [65, 0]
+	  Points		  [10, 0]
 	  Branch {
-	    Points		    [0, -35]
-	    DstBlock		    "Bus\nCreator"
-	    DstPort		    13
+	    Points		    [55, 0]
+	    Branch {
+	      Points		      [0, -35]
+	      DstBlock		      "Bus\nCreator"
+	      DstPort		      13
+	    }
+	    Branch {
+	      DstBlock		      "Derivative8"
+	      DstPort		      1
+	    }
 	  }
 	  Branch {
-	    DstBlock		    "Derivative8"
+	    Points		    [0, 185]
+	    DstBlock		    "To Workspace"
 	    DstPort		    1
 	  }
 	}
@@ -4201,7 +4235,7 @@ Model {
       Name		      "Rotor Speeds --> Force"
       SID		      "570"
       Ports		      [2, 1]
-      Position		      [575, 239, 675, 281]
+      Position		      [545, 239, 645, 281]
       ZOrder		      -17
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -4212,7 +4246,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Rotor Speeds --> Force"
-	Location		[225, 50, 1389, 834]
+	Location		[225, 72, 1389, 856]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -4823,7 +4857,7 @@ Model {
       Name		      "To Workspace"
       SID		      "92"
       Ports		      [1]
-      Position		      [260, 44, 365, 76]
+      Position		      [260, 129, 365, 161]
       ZOrder		      -7
       VariableName	      "h_ref"
       MaxDataPoints	      "inf"
@@ -4835,7 +4869,7 @@ Model {
       Name		      "To Workspace1"
       SID		      "93"
       Ports		      [1]
-      Position		      [1035, 184, 1140, 216]
+      Position		      [925, 184, 1030, 216]
       ZOrder		      -7
       VariableName	      "h_states"
       MaxDataPoints	      "inf"
@@ -4847,7 +4881,7 @@ Model {
       Name		      "To Workspace2"
       SID		      "230"
       Ports		      [1]
-      Position		      [580, 59, 685, 91]
+      Position		      [500, 129, 605, 161]
       ZOrder		      -7
       VariableName	      "h_rotor_thrust"
       MaxDataPoints	      "inf"
@@ -4864,19 +4898,19 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, 160; -475, 0]
+	Points			[0, 160; -395, 0]
 	Branch {
 	  DstBlock		  "Bus\nSelector"
 	  DstPort		  1
 	}
 	Branch {
-	  Points		  [-315, 0; 0, -155]
+	  Points		  [-465, 0; 0, -155]
 	  Branch {
 	    DstBlock		    "Controller - Error to Rotor Speed"
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [-130, 0]
+	    Points		    [0, -120]
 	    DstBlock		    "Reference Generator"
 	    DstPort		    1
 	  }
@@ -4893,7 +4927,7 @@ Model {
       }
       Branch {
 	Labels			[0, 0]
-	Points			[0, 175]
+	Points			[0, 90]
 	DstBlock		"Controller - Error to Rotor Speed"
 	DstPort			1
       }
@@ -4907,7 +4941,7 @@ Model {
 	DstPort			1
       }
       Branch {
-	Points			[0, -175]
+	Points			[0, -105]
 	DstBlock		"To Workspace2"
 	DstPort			1
       }

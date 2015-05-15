@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.271"
+    ComputedModelVersion    "1.276"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "dwai"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun May 10 21:38:11 2015"
-  RTWModifiedTimeStamp	  353167257
-  ModelVersionFormat	  "1.%<AutoIncrement:271>"
+  LastModifiedDate	  "Fri May 15 12:35:32 2015"
+  RTWModifiedTimeStamp	  353558938
+  ModelVersionFormat	  "1.%<AutoIncrement:276>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,7 +67,6 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "smc_quadcopter"
-    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -798,6 +797,19 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      Sin
+      SineType		      "Time based"
+      TimeSource	      "Use simulation time"
+      Amplitude		      "1"
+      Bias		      "0"
+      Frequency		      "1"
+      Phase		      "0"
+      Samples		      "10"
+      Offset		      "0"
+      SampleTime	      "-1"
+      VectorParams1D	      on
+    }
+    Block {
       BlockType		      Step
       Time		      "1"
       Before		      "0"
@@ -866,7 +878,7 @@ Model {
   }
   System {
     Name		    "pid_quadcopter"
-    Location		    [126, 79, 1432, 571]
+    Location		    [5, 108, 1183, 696]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -880,13 +892,13 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "318"
+    SIDHighWatermark	    "319"
     Block {
       BlockType		      BusSelector
       Name		      "Bus\nSelector"
       SID		      "87"
       Ports		      [1, 6]
-      Position		      [135, 179, 140, 311]
+      Position		      [135, 204, 140, 336]
       ZOrder		      -3
       ShowName		      off
       OutputSignals	      "x_ref,y_ref,z_ref,phi_ref,th_ref,psi_ref"
@@ -932,7 +944,7 @@ Model {
       Name		      "Bus\nSelector1"
       SID		      "94"
       Ports		      [1, 6]
-      Position		      [335, 392, 340, 473]
+      Position		      [335, 387, 340, 468]
       ZOrder		      -3
       BlockMirror	      on
       ShowName		      off
@@ -991,7 +1003,7 @@ Model {
       Name		      "Mux"
       SID		      "95"
       Ports		      [6, 1]
-      Position		      [190, 178, 195, 312]
+      Position		      [190, 203, 195, 337]
       ZOrder		      -12
       ShowName		      off
       Inputs		      "6"
@@ -1002,7 +1014,7 @@ Model {
       Name		      "Mux1"
       SID		      "96"
       Ports		      [6, 1]
-      Position		      [250, 391, 255, 474]
+      Position		      [250, 386, 255, 469]
       ZOrder		      -12
       BlockMirror	      on
       ShowName		      off
@@ -2498,7 +2510,7 @@ Model {
       Name		      "Plant - Quadcopter Model"
       SID		      "44"
       Ports		      [1, 1]
-      Position		      [835, 234, 980, 306]
+      Position		      [775, 234, 920, 306]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -3275,8 +3287,8 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"Reference"
-	Location		[568, 164, 2004, 991]
-	Open			off
+	Location		[568, 186, 2004, 1013]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -3456,6 +3468,22 @@ Model {
 	  }
 	}
 	Block {
+	  BlockType		  Sin
+	  Name			  "Sine Wave"
+	  SID			  "319"
+	  Ports			  [0, 1]
+	  Position		  [25, 35, 55, 65]
+	  ZOrder		  -21
+	  Amplitude		  ".1"
+	  SampleTime		  "0"
+	  Port {
+	    PortNumber		    1
+	    Name		    "x_ref"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
 	  BlockType		  Step
 	  Name			  "Step"
 	  SID			  "282"
@@ -3467,22 +3495,6 @@ Model {
 	  Port {
 	    PortNumber		    1
 	    Name		    "y_ref"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  Step
-	  Name			  "Step1"
-	  SID			  "317"
-	  Position		  [25, 35, 55, 65]
-	  ZOrder		  -22
-	  Time			  "step_time(1)"
-	  After			  "ref(1)"
-	  SampleTime		  "0"
-	  Port {
-	    PortNumber		    1
-	    Name		    "x_ref"
 	    RTWStorageClass	    "Auto"
 	    DataLoggingNameMode	    "SignalName"
 	  }
@@ -3792,7 +3804,7 @@ Model {
 	Line {
 	  Name			  "x_ref"
 	  Labels		  [0, 0]
-	  SrcBlock		  "Step1"
+	  SrcBlock		  "Sine Wave"
 	  SrcPort		  1
 	  Points		  [35, 0]
 	  Branch {
@@ -3842,7 +3854,7 @@ Model {
       Name		      "To Workspace1"
       SID		      "93"
       Ports		      [1]
-      Position		      [1100, 194, 1205, 226]
+      Position		      [1000, 194, 1105, 226]
       ZOrder		      -7
       VariableName	      "h_sim"
       MaxDataPoints	      "inf"
@@ -4692,16 +4704,15 @@ Model {
     Line {
       SrcBlock		      "Plant - Quadcopter Model"
       SrcPort		      1
-      Points		      [90, 0]
+      Points		      [40, 0]
       Branch {
 	Points			[0, -60]
 	DstBlock		"To Workspace1"
 	DstPort			1
       }
       Branch {
-	Points			[0, 160; -535, 0]
+	Points			[0, 160; -425, 0]
 	Branch {
-	  Points		  [-185, 0]
 	  DstBlock		  "Bus\nSelector1"
 	  DstPort		  1
 	}
@@ -4716,7 +4727,7 @@ Model {
       SrcPort		      1
       Points		      [15, 0]
       Branch {
-	Points			[0, 185]
+	Points			[0, 210]
 	DstBlock		"Bus\nSelector"
 	DstPort			1
       }
@@ -4776,14 +4787,13 @@ Model {
     Line {
       SrcBlock		      "Mux"
       SrcPort		      1
-      Points		      [0, 25]
       DstBlock		      "Sum"
       DstPort		      1
     }
     Line {
       SrcBlock		      "Mux1"
       SrcPort		      1
-      Points		      [-10, 0]
+      Points		      [-10, 0; 0, -140; -5, 0; 0, 5]
       DstBlock		      "Sum"
       DstPort		      2
     }

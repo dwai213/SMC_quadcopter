@@ -2,3 +2,10 @@
 *.mdl~
 slprj/
 sliding_quadcopter_sfun.mexmaci64
+report/.DS_Store
+report/IEEEtran.cls
+report/main.aux
+report/main.fdb_latexmk
+report/main.log
+report/main.pdf
+report/main.synctex.gz
